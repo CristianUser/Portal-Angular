@@ -1,0 +1,57 @@
+<div class="row">
+    <div class="col-4">
+      <br>
+        <table class="table table-borderless table-striped table-dark">
+            <thead>
+              <tr>
+                <th scope="col">Codigo</th>
+                <th scope="col">Nombre</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of asignaturas" (click)="setReq(item.ADV_REQ_CODE)">
+                <td (click)="setReq(item.ADV_REQ_CODE)">{{item.ADV_REQ_CODE}}</td>
+                <td>{{item.ADV_REQ_DESC}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- <app-secciones *ngIf="mostrar" [req]="000"></app-secciones> -->
+          
+  
+    </div>
+    <div class="col-8">
+      <br>
+        <div>
+            <table class="table table-borderless table-striped table-dark">
+              <thead>
+                <tr>
+                  <th scope="col">Codigo</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Capacidad</th>
+                  <th scope="col">Enrolled</th>
+                  <th scope="col">Profesor</th>
+                  <th scope="col">Horario</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of secciones">
+                  <td>{{item.CRS_CDE}}</td>
+                  <td>{{item.CRS_TITLE}}</td>
+                  <td>{{item.CAPACIDAD}}</td>
+                  <td>{{item.CRS_ENROLLMENT}}</td>
+                  <td>{{item.PROFESOR}}</td>
+                  <td>{{item.HORARIO}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+    </div>
+  </div>
+  <div style="background-color:white;" class="row" *ngFor="let item of creditos">
+    <div class="col">
+      <h5>Asignaturas Seleccionadas: {{item.ASIGSELECIONADA}}</h5>
+    </div>
+    <div class="col">
+      <h5>Creditos inscritos: {{item.CreditoAInscribir +"/"+ item.LimiteDeCredito}}</h5>
+    </div>
+  </div>
