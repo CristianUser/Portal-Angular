@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {DataService} from '../../data.service';
-import {SeccionesComponent} from './secciones/secciones.component';
 
 @Component({
   selector: 'app-asignaturas',
@@ -11,21 +10,29 @@ import {SeccionesComponent} from './secciones/secciones.component';
 export class AsignaturasComponent implements OnInit {
   
   asignaturas;
-  secciones;
+  secciones=[];
+  laboratorios=[];
   creditos;
-  constructor(private dataService:DataService)//, private secciones:SeccionesComponent) 
+  horario;
+  constructor(private dataService:DataService)
   {
-    this.get();
+    this.getAsignaturas();
+    this.getHorario();
     this.dataService.getCreditos().subscribe(res=> {
-      console.log(res);
+      //console.log(res);
       this.creditos=res;
     })
    }
-   get(){
+   getAsignaturas(){
     this.dataService.getAsignaturas().subscribe(res=> {
       //console.log(res);
       this.asignaturas=res;
     })
+   }
+   getHorario(){
+     this.dataService.getHorario().subscribe(res=> {
+      //console.log(res);
+      this.horario=res;})
    }
    req;
    setReq(val){
@@ -34,10 +41,19 @@ export class AsignaturasComponent implements OnInit {
    }
 
    getSecciones(){
-    //console.log("req= "+this.req);
+     let laboratorios=[],secciones=[];
     this.dataService.getSecciones(this.req).subscribe(res=> {
-      console.log(res);
-      this.secciones=res;
+      let obj;
+      obj=res;
+       for (let item of obj) {
+         if(item.CRS_CDE.substring(8,9)=='L'){
+            laboratorios.push(item);
+         }else{
+           secciones.push(item);
+         }
+       }
+       this.secciones=secciones;
+       this.laboratorios=laboratorios;
     })
   }
 

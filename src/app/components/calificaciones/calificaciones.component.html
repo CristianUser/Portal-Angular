@@ -1,32 +1,33 @@
-<div class="row">
-  <div class="col">
-    <div class="cuadro">
-      <select name="" id="" (change)="sendPeriodo(selectPeriodo.value)" #selectPeriodo>
-        <option value="{{periodo.Periodo}}" *ngFor="let periodo of periodos" >{{periodo.Periodo}}</option>
-      </select>
-    </div>
-    <div>
-      <div class="row">
-        <div class="col-3"></div>
-        <div class="col-6"><br>
-          <table class="table table-borderless table-striped table-dark">
-              <thead>
-                <tr>
-                  <th scope="col">Nombre</th>
-                  <th scope="col">Letter</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let item of calificaciones">
-                  <td>{{item.CRS_TITLE}}</td>
-                  <td>{{item.GRADE_CDE}}</td>
-                </tr>
-              </tbody>
-            </table>
-        </div>
-        <div class="col-3"></div>
+
+  <div class="cuadro">
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-6" style="text-align:  center;">
+        <select name="" id="" (change)="sendPeriodo(selectPeriodo.value)" #selectPeriodo>
+          <option value="{{periodo.Periodo}}" *ngFor="let periodo of periodos" >{{periodo.Periodo}}</option>
+        </select>
       </div>
-        
+      <div class="col-3"></div>
     </div>
   </div>
-</div>
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-6"><br>
+        <table class="table table-borderless table-striped table-dark">
+            <thead>
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Letter</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of calificaciones">
+                <td>{{item.CRS_TITLE}}</td>
+                <td>{{item.GRADE_CDE}}</td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+      <div class="col-3"></div>
+    </div>
+

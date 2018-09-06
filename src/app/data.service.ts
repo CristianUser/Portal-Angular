@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -17,15 +17,18 @@ export class DataService {
    }
    setMatricula(num){
      this.matricula=num;
-     console.log('Matricula seteada');
+     //console.log('Matricula seteada');
    }
    setPeriodoEst(periodo){
-
      this.periodo=[periodo.substring(0,2),periodo.substring(2,6)];;
-     console.log(this.periodo);
-     console.log("Periodo seteado");
+     //console.log(this.periodo);
+     //console.log("Periodo seteado");
    } 
-  //
+  //Buscarlab?reque=CIM008&yr_cde=2018&trm_cde=R3
+   buscarLab(){
+    return this.http.get("https://portal.ucateci.edu.do:446/api/Buscarlab?reque=CIM008&yr_cde=2018&trm_cde=R3");
+   }
+
    getEstudiante(){
     return this.http.get("https://portal.ucateci.edu.do:446/api/Estudiante?id_num="+this.matricula+"&yr_cde=2018&trm_cde=R3");
    }
@@ -41,8 +44,11 @@ export class DataService {
    getCreditos(){
     return this.http.get("https://portal.ucateci.edu.do:446/api/CreditoDisponible?id_num="+this.matricula+"&yr_cde="+this.periodo[1]+"&trm="+this.periodo[0]);
    }
-   getHorario(){
+   getHorarioPrematricula(){
     return this.http.get("https://portal.ucateci.edu.do:446/api/HorarioPrematriculado?id_num="+this.matricula+"&yr="+this.periodo[1]+"&trm="+this.periodo[0]);
+   }
+   getHorario(){
+    return this.http.get("https://portal.ucateci.edu.do:446/api/Horario?id_num="+this.matricula+"&yr_cde="+this.periodo[1]+"&trm="+this.periodo[0]);
    }
    getAsignaturas(){
     return this.http.get("https://portal.ucateci.edu.do:446/api/AsignaturaPreSeleccion?id_num="+this.matricula+"&yr="+this.periodo[1]+"&trm="+this.periodo[0]+"&loc=1");

@@ -1,3 +1,29 @@
 td:active{
     background-color: rgba(0, 0, 0, 0.513);
 }
+.table-wrapper-scroll-y {
+    display: block;
+    max-height: 480px;
+    overflow-y: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    
+  }
+
+  /* width */
+ ::-webkit-scrollbar {
+    width: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}

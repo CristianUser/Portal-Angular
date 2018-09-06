@@ -15,14 +15,14 @@ export class PersonaDataComponent implements OnInit {
   }
   getEstudiante(){
     this.dataService.getEstudiante().subscribe(res=> {
-      console.log(res);
+      //console.log(res);
       this.estudiante=res;
       this.setPeriodo();
     })
    }
    getBalance(){
     this.dataService.getBalance().subscribe(res=> {
-      console.log(res);
+      //console.log(res);
       this.balance=res;
     })
    }

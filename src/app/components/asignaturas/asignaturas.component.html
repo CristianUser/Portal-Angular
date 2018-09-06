@@ -1,28 +1,28 @@
 <div class="row">
     <div class="col-4">
       <br>
-        <table class="table table-borderless table-striped table-dark">
-            <thead>
-              <tr>
-                <th scope="col">Codigo</th>
-                <th scope="col">Nombre</th>
-              </tr>
-            </thead>
+      <div class="table table-borderless table-striped table-dark" style="margin-bottom: 0rem;">
+        <thead  >
+          <tr>
+            <th scope="col">Codigo</th>
+            <th scope="col">Nombre</th>
+          </tr>
+        </thead>
+      </div>
+        <table class="table table-borderless table-striped table-dark table-wrapper-scroll-y">
             <tbody>
               <tr *ngFor="let item of asignaturas" (click)="setReq(item.ADV_REQ_CODE)">
-                <td (click)="setReq(item.ADV_REQ_CODE)">{{item.ADV_REQ_CODE}}</td>
+                <td>{{item.ADV_REQ_CODE}}</td>
                 <td>{{item.ADV_REQ_DESC}}</td>
               </tr>
             </tbody>
           </table>
-          <!-- <app-secciones *ngIf="mostrar" [req]="000"></app-secciones> -->
-          
   
     </div>
     <div class="col-8">
       <br>
         <div>
-            <table class="table table-borderless table-striped table-dark">
+            <div class="table table-borderless table-striped table-dark" style="margin-bottom: 0rem;">
               <thead>
                 <tr>
                   <th scope="col">Codigo</th>
@@ -31,8 +31,11 @@
                   <th scope="col">Enrolled</th>
                   <th scope="col">Profesor</th>
                   <th scope="col">Horario</th>
+                  <th scope="col"></th>
                 </tr>
               </thead>
+              </div>
+            <table class="table table-borderless table-striped table-dark table-wrapper-scroll-y">
               <tbody>
                 <tr *ngFor="let item of secciones">
                   <td>{{item.CRS_CDE}}</td>
@@ -41,11 +44,42 @@
                   <td>{{item.CRS_ENROLLMENT}}</td>
                   <td>{{item.PROFESOR}}</td>
                   <td>{{item.HORARIO}}</td>
+                  <td><a href="">Agregar</a></td>
                 </tr>
               </tbody>
             </table>
           </div>
     </div>
+  </div>
+  <div class="row" >
+    <div class="col-1"></div>
+    <div class="col-10">
+        <table class="table table-borderless table-striped table-dark table-wrapper-scroll-y" *ngIf="laboratorios.length"  >
+            <thead>
+              <tr>
+                <th scope="col">Codigo</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Capacidad</th>
+                <th scope="col">Enrolled</th>
+                <th scope="col">Profesor</th>
+                <th scope="col">Horario</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of laboratorios">
+                <td>{{item.CRS_CDE}}</td>
+                <td>{{item.CRS_TITLE}}</td>
+                <td>{{item.CAPACIDAD}}</td>
+                <td>{{item.CRS_ENROLLMENT}}</td>
+                <td>{{item.PROFESOR}}</td>
+                <td>{{item.HORARIO}}</td>
+                <td><a href="">Agregar</a></td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+    <div class="col-1"></div>
   </div>
   <div style="background-color:white;" class="row" *ngFor="let item of creditos">
     <div class="col">
@@ -53,5 +87,31 @@
     </div>
     <div class="col">
       <h5>Creditos inscritos: {{item.CreditoAInscribir +"/"+ item.LimiteDeCredito}}</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <table class="table table-borderless table-striped table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Codigo</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Horario</th>
+            <th scope="col">Creditos</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of horario">
+            <td>{{item.CRS_CDE}}</td>
+            <td>{{item.CRS_TITLE}}</td>
+            <td>{{item.TRANSACTION_STS}}</td>
+            <td>{{item.HORARIO}}</td>
+            <td>{{item.CREDIT_HRS}}</td>
+            <td><a href="">Eliminar</a></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
