@@ -8,7 +8,8 @@ import {DataService} from '../../data.service';
 })
 export class CalificacionesComponent implements OnInit {
   periodos;
-  calificaciones;
+  calificaciones=[];
+  visible=false;
   constructor(private dataService:DataService) {
     this.getPeriodos();
    }
@@ -21,16 +22,27 @@ export class CalificacionesComponent implements OnInit {
    }
    sendPeriodo(val){
      let periodo=[val.substring(0,2),val.substring(3,7)];
-     console.log("Select");
-     console.log(periodo);
+     //console.log("Select");
+     //console.log(periodo);
      this.getCalificaciones(periodo);
      return periodo;
    }
    getCalificaciones(per){
+     this.visible=true;
      //console.log("Select");
+     let calificaciones=[];
      this.dataService.getCalificaciones(per).subscribe(res=> {
-      console.log(res);
-      this.calificaciones=res;
+      let obj;
+      obj=res;
+       for (let item of obj) {
+         if(item.CRS_CDE.substring(8,9)=='L'){
+            //laboratorios.push(item);
+         }else{
+           calificaciones.push(item);
+         }
+       }
+      //console.log(res);
+      this.calificaciones=calificaciones;
      })
    }
   ngOnInit() {
