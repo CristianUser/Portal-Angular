@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DataService {
-  matricula=20161043;
+  matricula=0;
   periodo;
   calificaciones;
   
