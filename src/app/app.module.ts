@@ -19,6 +19,7 @@ const routes:Route[] = [
   {path: 'horario-prematricula',component:HorarioPrematriculaComponent},
   {path: '',component:PersonaDataComponent},
   {path: 'seleccion',component:AsignaturasComponent},
+  {path: 'seccion',component:SeccionesComponent},
   {path: 'calificaciones',component:CalificacionesComponent}
 ]
 

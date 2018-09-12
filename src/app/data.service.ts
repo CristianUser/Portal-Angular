@@ -25,9 +25,9 @@ export class DataService {
      //console.log("Periodo seteado");
    } 
   //Buscarlab?reque=CIM008&yr_cde=2018&trm_cde=R3
-   buscarLab(){
-    return this.http.get("https://portal.ucateci.edu.do:446/api/Buscarlab?reque=CIM008&yr_cde=2018&trm_cde=R3");
-   }
+  //  buscarLab(){
+  //   return this.http.get("https://portal.ucateci.edu.do:446/api/Buscarlab?reque=CIM008&yr_cde=2018&trm_cde=R3");
+  //  }
 
    getEstudiante(){
     return this.http.get("https://portal.ucateci.edu.do:446/api/Estudiante?id_num="+this.matricula+"&yr_cde=2018&trm_cde=R3");

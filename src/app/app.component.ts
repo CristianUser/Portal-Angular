@@ -18,8 +18,10 @@ export class AppComponent {
       this.active=1;
     }else if(this.router.url=='/horario-prematricula'){
       this.active=2;
-    }else if(this.router.url=='/calificaciones'){
+    }else if(this.router.url=='/horario'){
       this.active=3;
+    }else if(this.router.url=='/calificaciones'){
+      this.active=4;
     }
     
   }
@@ -32,7 +34,7 @@ export class AppComponent {
     var n=0;n=inputMatricula;
     this.dataservice.setMatricula(n);
     if(this.router.url=='/'){
-      this.router.navigate(["/horario"]);
+      this.router.navigate(["/seccion"]);
       //setTimeout(100);
       //this.router.navigate(["/"]);
     }else{

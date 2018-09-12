@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import {DataService} from '../../../data.service';
+import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-secciones',
@@ -8,19 +8,9 @@ import {DataService} from '../../../data.service';
 })
 export class SeccionesComponent implements OnInit {
 
-  secciones;
-  mostrar=false;
-  @Input() req;
-  constructor(private dataService:DataService) {
-    this.get();
-  }
-  get(){
-    console.log("req= "+this.req);
-    this.dataService.getSecciones(this.req).subscribe(res=> {
-      console.log(res);
-      this.secciones=res;
-    })
-  }
+  constructor(private router:Router) {
+    router.navigate(["/"]);
+   }
   ngOnInit() {
   }
 
