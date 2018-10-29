@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs';
 
 
 
@@ -10,6 +11,7 @@ export class DataService {
   matricula=0;
   periodo;
   calificaciones;
+  cart=[];
   
 
   constructor(private http: HttpClient) {
@@ -24,10 +26,31 @@ export class DataService {
      //console.log(this.periodo);
      //console.log("Periodo seteado");
    } 
-  //Buscarlab?reque=CIM008&yr_cde=2018&trm_cde=R3
-  //  buscarLab(){
-  //   return this.http.get("https://portal.ucateci.edu.do:446/api/Buscarlab?reque=CIM008&yr_cde=2018&trm_cde=R3");
-  //  }
+   addCart(subject){
+    this.cart.push(subject);
+    console.log(this.cart);
+   }
+   //Seleccion de materia
+   //https://portal.ucateci.edu.do:446/api/HacerSeleccion?reque=INF001L&yr_cde=2019&id_num=20181532&crs_cde=INF%20%20001L107crs_title=INTRODUCCION%20A%20LA%20INFORMATICA%20%20%20%20%20%20&trm_cd=R1&loc=1&estado=P&horario=%20M%20%20%20%20%20%20%20%2012%20/%2014%20%20%20%20E201
+   //Quitar materia
+   //https://portal.ucateci.edu.do:446/api/HacerSeleccion?reque=INF001L&yr_cde=2019&id_num=20181532&crs_cde=INF%20%20001L%20106&crs_title=INTRODUCCION%20A%20LA%20INFORMATICA&trm_cd=R1&loc=1&estado=D&horario=%20%20%20J%20%20%20%20%20%2018%20/%2020%20%20%20%20E202
+   postAsignatura(subject,estado){
+    let subjectObj={
+      yr_cde:this.periodo[1],
+      id_num:this.matricula,
+      trm_cd:this.periodo[0],
+      loc:1,
+      estado:estado,
+      reque:subject.ADV_REQ_CDE,
+      crs_cde:subject.CRS_CDE,
+      crs_title:subject.CRS_TITLE,
+      horario:subject.HORARIO
+    };
+    return this.http.post("https://portal.ucateci.edu.do:446/api/HacerSeleccion?reque="+subjectObj.reque+
+    "&yr_cde="+subjectObj.yr_cde+"&id_num="+subjectObj.id_num+"&crs_cde="+subjectObj.crs_cde+
+    "&crs_title="+subjectObj.crs_title+"&trm_cd="+subjectObj.trm_cd+"&loc="+subjectObj.loc+
+    "&estado="+subjectObj.estado+"&horario="+subjectObj.horario,this.calificaciones);
+   }
 
    getEstudiante(){
     return this.http.get("https://portal.ucateci.edu.do:446/api/Estudiante?id_num="+this.matricula+"&yr_cde=2018&trm_cde=R3");
@@ -48,6 +71,9 @@ export class DataService {
     return this.http.get("https://portal.ucateci.edu.do:446/api/HorarioPrematriculado?id_num="+this.matricula+"&yr="+this.periodo[1]+"&trm="+this.periodo[0]);
    }
    getHorario(){
+    return this.http.get("https://portal.ucateci.edu.do:446/api/EstudianteHorario?id_num="+this.matricula+"&yr="+this.periodo[1]+"&trm="+this.periodo[0]);
+   }
+   getHorario2(){
     return this.http.get("https://portal.ucateci.edu.do:446/api/Horario?id_num="+this.matricula+"&yr_cde="+this.periodo[1]+"&trm="+this.periodo[0]);
    }
    getAsignaturas(){

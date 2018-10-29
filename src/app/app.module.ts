@@ -12,6 +12,7 @@ import {DataService} from './data.service';
 import { AsignaturasComponent } from './components/asignaturas/asignaturas.component';
 import { SeccionesComponent } from './components/asignaturas/secciones/secciones.component';
 import { CalificacionesComponent } from './components/calificaciones/calificaciones.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 
 
 const routes:Route[] = [
@@ -20,7 +21,8 @@ const routes:Route[] = [
   {path: '',component:PersonaDataComponent},
   {path: 'seleccion',component:AsignaturasComponent},
   {path: 'seccion',component:SeccionesComponent},
-  {path: 'calificaciones',component:CalificacionesComponent}
+  {path: 'calificaciones',component:CalificacionesComponent},
+  {path: 'shopping-cart',component:ShoppingCartComponent}
 ]
 
 @NgModule({
@@ -31,7 +33,8 @@ const routes:Route[] = [
     HorarioComponent,
     AsignaturasComponent,
     SeccionesComponent,
-    CalificacionesComponent
+    CalificacionesComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,

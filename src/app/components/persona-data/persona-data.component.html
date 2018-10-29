@@ -2,25 +2,25 @@
 <div class="">
   <div class="row">
     <div class="col-1"></div>
-    <div class="col-10 content">
+    <div class="col-10 content" *ngFor="let item of estudiante">
   <div class="row">
     <div class="col">
-      <h3>{{estudiante[0].NOMBRES +" "+ estudiante[0].APELLIDOS}}</h3>
+      <h3>{{item.NOMBRES +" "+ item.APELLIDOS}}</h3>
     </div>
   </div>
   <div class="row">
     <div class="col">
-      <h4>Carrera: {{estudiante[0].DESC_CARR}}</h4>
+      <h4>Carrera: {{item.DESC_CARR}}</h4>
     </div>
     <div class="col">
-      <h4>Matricula: {{estudiante[0].ID_NUM}}</h4>
+      <h4>Matricula: {{item.ID_NUM}}</h4>
     </div>
   </div>
   <hr>
   <div class="row">
-    <div class="col"><h5>Indice Cuatrimestral :  {{estudiante[0].INDICE_CUAT}}</h5>  </div>
-    <div class="col"><h5>Indice General :  {{estudiante[0].INDICE_GEN}}</h5>   </div>
-    <div class="col"><h5>Balance en Caja :  {{balance[0].Balance}}</h5>   </div>
+    <div class="col"><h5>Indice Cuatrimestral :  {{item.INDICE_CUAT}}</h5>  </div>
+    <div class="col"><h5>Indice General :  {{item.INDICE_GEN}}</h5>   </div>
+    <div class="col" *ngFor="let item of balance"><h5>Balance en Caja :  {{item.Balance}}</h5>   </div>
   </div>
 </div>
 <div class="col-1"></div>

@@ -14,6 +14,7 @@ export class AsignaturasComponent implements OnInit {
   laboratorios=[];
   creditos;
   horario;
+  
   constructor(private dataService:DataService)
   {
     this.getAsignaturas();
@@ -23,6 +24,16 @@ export class AsignaturasComponent implements OnInit {
       this.creditos=res;
     })
    }
+   addCart(subject){
+     subject['precio']=subject['CREDIT_HRS']*365;
+    this.dataService.addCart(subject);
+  }
+  postAsignatura(subject,status){
+    this.dataService.postAsignatura(subject,status).subscribe(res=> {
+    this.getAsignaturas();
+    console.log(res);
+    })
+  }
    getAsignaturas(){
     this.dataService.getAsignaturas().subscribe(res=> {
       //console.log(res);
@@ -30,10 +41,15 @@ export class AsignaturasComponent implements OnInit {
     })
    }
    getHorario(){
-     this.dataService.getHorario().subscribe(res=> {
+     this.dataService.getHorario2().subscribe(res=> {
       //console.log(res);
       this.horario=res;})
    }
+   
+
+   prins(par){
+    console.log(par)
+    };
    req;
    setReq(val){
      this.req=val;

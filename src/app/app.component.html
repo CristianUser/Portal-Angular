@@ -21,19 +21,11 @@
       <li class="nav-item " [ngClass]="{'active':active === 4}">
         <a class="nav-link" routerLink="/calificaciones">Calificaciones</a>
       </li>
-      <!-- <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" routerLink="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="#">Action</a>
-          <a class="dropdown-item" routerLink="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="#">Something else here</a>
-        </div>
-      </li> -->
     </ul>
     <form class="form-inline my-2 my-lg-0" >
+      <a routerLink="/shopping-cart">
+        <span style="margin-right: 15px;color:#32383e"><i class="fas fa-shopping-cart"></i></span>
+      </a>
       <input class="form-control mr-sm-2" placeholder="Matricula" (keydown.enter)="setM(inputMatricula.value)" #inputMatricula  >
       <div class="btn btn-outline-success my-2 my-sm-0" (click)="setM(inputMatricula.value)"  >Buscar</div>
     </form>
