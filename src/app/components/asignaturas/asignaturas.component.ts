@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {DataService} from '../../data.service';
+import { AfireService } from '../../services/afire.service';
 
 @Component({
   selector: 'app-asignaturas',
@@ -15,7 +16,7 @@ export class AsignaturasComponent implements OnInit {
   creditos;
   horario;
   
-  constructor(private dataService:DataService)
+  constructor(private dataService:DataService,private fireservice:AfireService)
   {
     this.getAsignaturas();
     this.getHorario();
@@ -24,9 +25,9 @@ export class AsignaturasComponent implements OnInit {
       this.creditos=res;
     })
    }
-   addCart(subject){
+  addCart(subject){
      subject['precio']=subject['CREDIT_HRS']*365;
-    this.dataService.addCart(subject);
+    this.fireservice.addSubject(subject);
   }
   postAsignatura(subject,status){
     this.dataService.postAsignatura(subject,status).subscribe(res=> {
@@ -74,6 +75,7 @@ export class AsignaturasComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.fireservice.getShoppingCart();
   }
 
 }

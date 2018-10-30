@@ -2,17 +2,23 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule,Route } from '@angular/router';
+import { DataService } from './data.service';
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database'
+import { environment } from '../environments/environment';
+import { AfireService } from './services/afire.service';
 
 import { AppComponent } from './app.component';
 import { PersonaDataComponent } from './components/persona-data/persona-data.component';
 import { HorarioPrematriculaComponent } from './components/horario-prematricula/horario-prematricula.component';
 import { HorarioComponent } from './components/horario/horario.component';
 
-import {DataService} from './data.service';
 import { AsignaturasComponent } from './components/asignaturas/asignaturas.component';
 import { SeccionesComponent } from './components/asignaturas/secciones/secciones.component';
 import { CalificacionesComponent } from './components/calificaciones/calificaciones.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+
 
 
 const routes:Route[] = [
@@ -39,9 +45,11 @@ const routes:Route[] = [
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
   ],
-  providers: [DataService],
+  providers: [DataService,AfireService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

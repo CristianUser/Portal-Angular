@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {DataService} from './data.service';
+import { AfireService } from './services/afire.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -26,13 +27,14 @@ export class AppComponent {
     
   }
 
-  constructor(private dataservice:DataService, private router:Router){
+  constructor(private dataservice:DataService,private fireservice:AfireService, private router:Router){
   }
   setM(inputMatricula){
     console.log();
     console.log(inputMatricula);
     var n=0;n=inputMatricula;
     this.dataservice.setMatricula(n);
+    this.fireservice.setMatricula(n);
     if(this.router.url=='/'){
       this.router.navigate(["/seccion"]);
       //setTimeout(100);

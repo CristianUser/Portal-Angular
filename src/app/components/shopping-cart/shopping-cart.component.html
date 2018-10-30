@@ -18,6 +18,7 @@
                       <th scope="col">Horario</th>
                       <th scope="col">Precio</th>
                       <th scope="col">Creditos</th>
+                      <th></th>
                     </tr>
                   </thead>
                   <tbody *ngFor="let item of cart">
@@ -27,6 +28,7 @@
                       <td>{{item.HORARIO}}</td>
                       <td>{{item.precio}}</td>
                       <td>{{item.CREDIT_HRS}}</td>
+                      <td><span class="text-danger" (click)="removeSubject(item.$key)"><i class="fas fa-times"></i></span></td>
                     </tr>
                   </tbody>
                   <tfoot>
@@ -36,11 +38,12 @@
                           <th scope="col"></th>
                           <th scope="col">Total: {{total}}.00 RD$</th>
                           <th scope="col">Creditos:{{creditos}}</th>
+                          <th></th>
                       </tr>
                   </tfoot>
                 </table>
                 <div class="row">
-                  <div class="col">
+                  <div class="col text-right">
                     <button class="btn btn-success">Seleccionar</button>
                   </div>
                 </div>
