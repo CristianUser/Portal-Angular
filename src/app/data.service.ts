@@ -46,12 +46,15 @@ export class DataService {
       crs_title:subject.CRS_TITLE,
       horario:subject.HORARIO
     };
+    console.log(subject);
     return this.http.post("https://portal.ucateci.edu.do:446/api/HacerSeleccion?reque="+subjectObj.reque+
     "&yr_cde="+subjectObj.yr_cde+"&id_num="+subjectObj.id_num+"&crs_cde="+subjectObj.crs_cde+
     "&crs_title="+subjectObj.crs_title+"&trm_cd="+subjectObj.trm_cd+"&loc="+subjectObj.loc+
     "&estado="+subjectObj.estado+"&horario="+subjectObj.horario,this.calificaciones);
    }
-
+   getMatricula(){
+     return this.matricula;
+   }
    getEstudiante(){
     return this.http.get("https://portal.ucateci.edu.do:446/api/Estudiante?id_num="+this.matricula+"&yr_cde=2018&trm_cde=R3");
    }

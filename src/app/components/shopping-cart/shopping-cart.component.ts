@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../../data.service';
 import { AfireService } from '../../services/afire.service';
 
 @Component({
@@ -10,10 +11,19 @@ export class ShoppingCartComponent implements OnInit {
   cart;
   total=0;
   creditos=0;
-  constructor(private fireservice:AfireService)
+  constructor(private fireservice:AfireService,private dataService:DataService)
   {}
   removeSubject($key){
     this.fireservice.removeSubject($key);
+  }
+  removeAll(){
+    this.cart.forEach(subject => {
+      this.removeSubject(subject.$key);
+    });
+    setTimeout(()=>{
+      this.total=0;
+      this.creditos=0;
+    },200);
   }
   setVars(){
     this.total=0;
@@ -23,6 +33,19 @@ export class ShoppingCartComponent implements OnInit {
       this.creditos+=element.CREDIT_HRS;      
     });
   }
+  postAsignatura(subject,status){
+    this.dataService.postAsignatura(subject,status).subscribe(res=> {
+    console.log(res);
+    })
+  }
+  submitSubjects(){
+    // this.postAsignatura(this.cart[0],'P');
+    this.cart.forEach(subject => {
+      // console.log('inicio')
+      this.postAsignatura(subject,'P');
+      // console.log('termino')
+    });
+  };
   ngOnInit() {
     this.fireservice.getShoppingCart().snapshotChanges()
     .subscribe(item =>{

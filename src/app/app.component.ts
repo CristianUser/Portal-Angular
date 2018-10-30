@@ -30,8 +30,8 @@ export class AppComponent {
   constructor(private dataservice:DataService,private fireservice:AfireService, private router:Router){
   }
   setM(inputMatricula){
-    console.log();
-    console.log(inputMatricula);
+    // console.log();
+    // console.log(inputMatricula);
     var n=0;n=inputMatricula;
     this.dataservice.setMatricula(n);
     this.fireservice.setMatricula(n);

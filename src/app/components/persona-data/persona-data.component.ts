@@ -10,8 +10,11 @@ export class PersonaDataComponent implements OnInit {
   estudiante;
   balance;
   constructor(private dataService:DataService) {
-    this.getEstudiante();
-    this.getBalance();
+    if(dataService.getMatricula()!=0)
+    {
+      this.getEstudiante();
+      this.getBalance();
+    }
   }
   getEstudiante(){
     this.dataService.getEstudiante().subscribe(res=> {

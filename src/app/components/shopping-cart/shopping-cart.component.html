@@ -43,8 +43,11 @@
                   </tfoot>
                 </table>
                 <div class="row">
+                  <div class="col text-left">
+                      <button class="btn btn-danger" (click)="removeAll()">Vaciar Carrito</button>
+                  </div>
                   <div class="col text-right">
-                    <button class="btn btn-success">Seleccionar</button>
+                    <button class="btn btn-success" (click)="submitSubjects()">Seleccionar</button>
                   </div>
                 </div>
           </div>
